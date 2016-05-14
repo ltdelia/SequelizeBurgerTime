@@ -1,0 +1,86 @@
+<div class="container">
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="text-center">BurgerTime</h1>
+			<h3 class="text-center">Order up!</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4">
+			<input id="newBurger" type="text">
+			<button type="submit" id="order">Order this burger!</button>
+		</div>		
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Ready to Eat</div>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<tbody>
+						{{#each burger_data}}
+							<tr>
+								<td>{{this.id}}</td>
+								<td value={{this.burger_name}}>{{this.burger_name}}</td>
+								<td><button type="submit" class="devour">Devour it!</button></td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">Devoured</div>
+				<div class="panel-body">
+					<table class="table table-hover">
+						<tbody>
+						{{#each burger_data}}
+							{{#if this.devoured}}
+								<tr>
+									<td>{{this.id}}</td>
+									<td>{{this.burger_name}}</td>
+								</tr>
+							{{/if}}
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+$("#order").on('click', function(){
+	
+	var burger = {burger_name: $('#newBurger').val().trim()};
+
+	var currentURL = window.location.origin;
+
+	$.post(currentURL + '/api', burger)
+		.done(function(data){
+			console.log(data);
+		})
+
+	return false;
+});
+
+$(".devour").on('click', function(){
+
+	// var burger = {burger_name: $('#name').val().trim()};
+
+	// var currentURL = window.location.origin;
+
+	// $.post(currentURL + '/api', burger)
+	// 	.done(function(data){
+	// 		console.log(data);
+	// 	})
+
+	// return false;
+})
+
+
+</script>
