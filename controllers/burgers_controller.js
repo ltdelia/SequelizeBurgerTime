@@ -29,11 +29,14 @@ module.exports = function(app){
 
 	app.put('/api', function(req, res){
 		// UPDATE burgers SET devoured=true WHERE burger_name=?
-		// Burger.update({
-		// 	devoured: true,
-		// } where: {
-		// 		burger_name: '?'
-		// 	}
-		// });
+		var burger = req.body;
+		console.log(burger);
+		Burger.update({
+			devoured: true,
+		},{ 
+			where: {
+				burger_name: burger
+			}
+		});
 	});
 }

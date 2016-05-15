@@ -16,11 +16,15 @@ var Burger = sequelize.define("burger", {
 		type: Sequelize.STRING
 	},
 	devoured: {
-		type: Sequelize.BOOLEAN
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
 	},
 	date: {
-		type: Sequelize.DATE
-	}	
+		type: Sequelize.DATE,
+		defaultValue: Sequelize.NOW
+	}
+}, {
+	timestamps: false
 });
 
 Burger.sync();

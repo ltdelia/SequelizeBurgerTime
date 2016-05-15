@@ -18,12 +18,15 @@
 				<div class="panel-body">
 					<table class="table table-hover">
 						<tbody>
-						{{#each burger_data}}
+						{{#each result}}
+						{{#if this.devoured}}
+						{{else}}
 							<tr>
 								<td>{{this.id}}</td>
-								<td value={{this.burger_name}}>{{this.burger_name}}</td>
+								<td id="name" value={{this.burger_name}}>{{this.burger_name}}</td>
 								<td><button type="submit" class="devour">Devour it!</button></td>
 							</tr>
+						{{/if}}
 						{{/each}}
 						</tbody>
 					</table>
@@ -36,7 +39,7 @@
 				<div class="panel-body">
 					<table class="table table-hover">
 						<tbody>
-						{{#each burger_data}}
+						{{#each result}}
 							{{#if this.devoured}}
 								<tr>
 									<td>{{this.id}}</td>
@@ -70,11 +73,12 @@ $("#order").on('click', function(){
 
 $(".devour").on('click', function(){
 
-	// var burger = {burger_name: $('#name').val().trim()};
+	var burger = {burger_name: $('#name').html()};
+	console.log(burger.burger_name);
 
 	// var currentURL = window.location.origin;
 
-	// $.post(currentURL + '/api', burger)
+	// $.put(currentURL + '/api', burger)
 	// 	.done(function(data){
 	// 		console.log(data);
 	// 	})
