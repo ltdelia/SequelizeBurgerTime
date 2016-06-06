@@ -24,7 +24,7 @@
 							<tr>
 								<td>{{this.id}}</td>
 								<td id="name" value={{this.burger_name}}>{{this.burger_name}}</td>
-								<td><button type="submit" class="devour">Devour it!</button></td>
+								<td><button id={{this.burger_name}} type="submit" class="devour">Devour it!</button></td>
 							</tr>
 						{{/if}}
 						{{/each}}
@@ -71,19 +71,12 @@ $("#order").on('click', function(){
 	return false;
 });
 
-$(".devour").on('click', function(){
+$(".devour").on('click', function(event){
 
-	var burger = {burger_name: $('#name').html()};
+	var burger = {burger_name: event.target.id};
 	console.log(burger.burger_name);
 
-	// var currentURL = window.location.origin;
-
-	// $.put(currentURL + '/api', burger)
-	// 	.done(function(data){
-	// 		console.log(data);
-	// 	})
-
-	// return false;
+	return false;
 })
 
 
