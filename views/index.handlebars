@@ -64,25 +64,41 @@
 
 <script type="text/javascript">
 
+// When the "Order this burger!" button is clicked...
 $("#order").on('click', function(){
 	
+	// We grab the value of the corresponding input, where id=newBurger...
 	var burger = {burger_name: $('#newBurger').val().trim()};
 
+	// We grab the currentURL location...
 	var currentURL = window.location.origin;
 
+	// And POST the burger object, containing the burger_name, to the /api route
 	$.post(currentURL + '/api', burger)
 		.done(function(data){
 			console.log(data);
 		})
 
+	// We return false so the page doesn't refresh
 	return false;
 });
 
+// When a "Devour It!" button is clicked...
 $(".devour").on('click', function(event){
 
-	var burger = {id: event.target.id};
-	console.log(burger.id);
+	// We grab the id of the corresponding row/burger...
+	var burger = {id: parseInt(event.target.id)};
 
+	// We grab the currentURL location...
+	var currentURL = window.location.origin;
+
+	// And POST the burger object, this time containing the id, to the /api route
+	$.post(currentURL + '/api', burger)
+		.done(function(data){
+			console.log(data);
+		})
+
+	// We return false so the page doesn't refresh
 	return false;
 })
 
