@@ -11,6 +11,7 @@
 		<div class="col-lg-4">
 			<input id="newBurger" type="text">
 			<button type="submit" id="order">Order this burger!</button>
+			<img src="../static/images/burger.jpeg" style="width: 100%">
 		</div>		
 		<div class="col-lg-4">
 			<div class="panel panel-default">
@@ -24,7 +25,7 @@
 							<tr>
 								<td>{{this.id}}</td>
 								<td id="name" value={{this.burger_name}}>{{this.burger_name}}</td>
-								<td><button id={{this.burger_name}} type="submit" class="devour">Devour it!</button></td>
+								<td><button id={{this.id}} type="submit" class="devour">Devour it!</button></td>
 							</tr>
 						{{/if}}
 						{{/each}}
@@ -52,6 +53,12 @@
 				</div>
 			</div>
 		</div>
+		<div>
+			<hr>
+			<a href="/api">API</a>
+			<a> | </a>
+			<a href="https://github.com/ltdelia/SequelizeBurgerTime">Github Repo</a>
+		</div>
 	</div>
 </div>
 
@@ -73,8 +80,8 @@ $("#order").on('click', function(){
 
 $(".devour").on('click', function(event){
 
-	var burger = {burger_name: event.target.id};
-	console.log(burger.burger_name);
+	var burger = {id: event.target.id};
+	console.log(burger.id);
 
 	return false;
 })

@@ -22,7 +22,15 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
 
+// Static Content Folder
+var staticContentFolder;
+staticContentFolder = __dirname + '/public';
+
+app.use('/static', express.static(staticContentFolder));
+
 // require our controller here -- ties it all together
 require('./controllers/burgers_controller.js')(app);
 
-app.listen(PORT);
+app.listen(PORT, function(){
+	console.log("App listening on PORT: " + PORT);
+});
