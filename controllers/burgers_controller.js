@@ -14,7 +14,7 @@ module.exports = function(app){
 	});	
 	
 	// Our API. The app will get the path '/api'.
-	// Sequelie will "SELECT * " from our table, then respond with a JSON of our data
+	// Sequelize will "SELECT * " from our table, then respond with a JSON of our data
 	app.get('/api', function(req, res){
 		Burger.findAll({})
 			.then(function(result){

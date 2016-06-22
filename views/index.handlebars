@@ -87,7 +87,7 @@ $("#order").on('click', function(){
 $(".devour").on('click', function(event){
 
 	// We grab the id of the corresponding row/burger...
-	var burger = {id: parseInt(event.target.id)};
+	var burger = {id: event.target.id};
 
 	// We grab the currentURL location...
 	var currentURL = window.location.origin;
