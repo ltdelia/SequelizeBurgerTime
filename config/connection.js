@@ -24,7 +24,7 @@ var selectedSource = source.jawsDB;
 var sequelize = new Sequelize(selectedSource.database, selectedSource.user, selectedSource.password, {
     host: selectedSource.host,
     dialect: 'mysql',
-
+    
     pool: {
         max: 5,
         min: 0,
