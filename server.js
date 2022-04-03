@@ -1,5 +1,7 @@
 var express = require('express');
-var expressHandlebars = require('express-handlebars');
+var Handlebars = require('handlebars')
+var { engine } = require('express-handlebars');
+var {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 
@@ -8,8 +10,9 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // setting up handlebars
-app.engine('handlebars', expressHandlebars({
-  defaultLayout: 'main'
+app.engine('handlebars', engine({
+  defaultLayout: 'main',
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 }));
 app.set('view engine', 'handlebars');
 
